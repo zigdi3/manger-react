@@ -30,38 +30,49 @@ type ProductUpdateFormProps = {
 const ProductTable: React.FC<ProductTableProps> = ({ products }) => {
 
   return (
-    <table >
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Name</th>
-          <th>Cost Price</th>
-          <th>Sales Price</th>
-          <th>New Price</th>
-          <th>Found</th>
-          <th>Valid Cost</th>
-          <th>Valid Price</th>
-          <th>Valid Kit</th>
-        </tr>
-      </thead>
-      <tbody>
+    <div >
+      <section>
+        <p>* "Valid Cost" : Preço atende demanda do financeiro, novo preço presente no fomulario é maior do quê o seu custo.</p>
+        <p>* "Valid Price": Preço atende demanda do Marketing, novo preço presente no formulario
+          está dentro do ajuste de preço maximo ou minimo em até <b>10%</b>. </p>
+        <p>* "Valid Price": Preço do kit/pack foi atualizado com novo preço do produto.
+          Para <b>UM</b> único produto nos demais itens na tabela  <i>sempre será válido</i>. </p>
+      </section>
 
-        {products.map(product => (
-          <tr key={product.code}>
-            <td>{product.code}</td>
-            <td>{product.name}</td>
-            <td>{product.costPrice}</td>
-            <td>{product.salesPrice}</td>
-            <td>{product.newPrice}</td>
-            <td>{product.isFound ? "Found" : "NOT EXIST"}</td>
-            <td>{product.isValidCost ? "Valid" : "NOT VALID"}</td>
-            <td>{product.isValidPrice ? "Valid" : "NOT VALID"}</td>
-            <td>{product.isValidPack ? "Valid/One" : "NOT VALID"}</td>
-
+      <table >
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Cost Price</th>
+            <th>Sales Price</th>
+            <th>New Price</th>
+            <th>Found</th>
+            <th>Valid Cost</th>
+            <th>Valid Price</th>
+            <th>Valid Kit</th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+
+          {products.map(product => (
+            <tr key={product.code}>
+              <td>{product.code}</td>
+              <td>{product.name}</td>
+              <td>{product.costPrice}</td>
+              <td>{product.salesPrice}</td>
+              <td>{product.newPrice}</td>
+              <td>{product.isFound ? "Found" : "NOT EXIST"}</td>
+              <td>{product.isValidCost ? "Valid" : "NOT VALID"}</td>
+              <td>{product.isValidPrice ? "Valid" : "NOT VALID"}</td>
+              <td>{product.isValidPack ? "Valid/One" : "NOT VALID"}</td>
+
+            </tr>
+          ))}
+
+        </tbody>
+      </table>
+    </div>
   );
 };
 
