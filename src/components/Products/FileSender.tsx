@@ -95,7 +95,7 @@ const FileSender: React.FC = () => {
     event.preventDefault();
 
     try {
-      debugger
+
       const response = await axios.post('http://localhost:3000/products/validateForm', { fileData });
       const res = response.data?.data;
       setProducts(res);
